@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: app1-v2-virtualservice
+  namespace: default
+spec:
+  hosts:
+  - a5a18133073df496eafc4cb99032d7c9-445049dd79a2d647.elb.us-west-1.amazonaws.com
+  gateways:
+  - app01-v2-gateway
+  http:
+  - name: "app01v2"
+    match:
+    - uri:
+        prefix: "/app01v2"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: app01-v2-service.default.svc.cluster.local
+  

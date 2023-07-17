@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: app01-v2-gateway
+  namespace: default
+spec:
+  selector:
+    istio:  ingressgateway
+  servers:
+  - port:
+      name:      http
+      number:    80
+      protocol:  HTTP
+    hosts:
+    - a5a18133073df496eafc4cb99032d7c9-445049dd79a2d647.elb.us-west-1.amazonaws.com
+  - port:    
+      name:      https
+      number:    443
+      protocol:  HTTP
+    tls:
+      mode:  PASSTHROUGH
+    hosts:
+    - a5a18133073df496eafc4cb99032d7c9-445049dd79a2d647.elb.us-west-1.amazonaws.com

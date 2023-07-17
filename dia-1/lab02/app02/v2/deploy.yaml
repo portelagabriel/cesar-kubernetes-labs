@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app02-v2-deployment
+  labels:
+    app: app02-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app02-v2
+  template:
+    metadata:
+      labels:
+        app: app02-v2
+    spec:
+      containers:
+      - name: app02-v2
+        image: public.ecr.aws/l8p4i2g8/secomp-app02:v02
+        ports:
+        - containerPort: 8000
+        env:
+        - name: info
+          value: "This page was loaded using content from another application."
+        - name: title
+          value: "APP1<->APP2 Communication"
+        resources:
+          requests:
+            cpu: '20m'
+            memory: '100Mi'
+          limits:
+            cpu: '20m'
+            memory: '100Mi'
