@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app2-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: a6a99bc206d994476abb48993c710188-5c8c8b71b497ae2e.elb.us-east-1.amazonaws.com
+      http:
+        paths:
+          - path: /app01v2
+            pathType: Prefix
+            backend:
+              service:
+                name: app01-v2-service
+                port:
+                  number: 80  # Update if the service uses a different port
+
+  

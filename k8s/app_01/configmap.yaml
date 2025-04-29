@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app01-v2-config
+  namespace: default
+data:
+  url: "http://app02-v2-service.default.svc.cluster.local/infos"
