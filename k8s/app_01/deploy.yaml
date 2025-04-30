@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: app01-v2
+        version: '2'
     spec:
       containers:
       - name: app01-v2
